@@ -148,15 +148,15 @@ public:
         /** Height or Time Based Activations **/
         nLastPOWBlock = 200;
         nModifierUpdateBlock = 0;
-        nZerocoinStartHeight = nLastPOWBlock + 1;
+        nZerocoinStartHeight = 32801;
         nZerocoinStartTime = nBlockStartTime + 3600; // after 1 hours
-        nBlockEnforceSerialRange = nLastPOWBlock + 3; //Enforce serial range starting this block
-        nBlockRecalculateAccumulators = nLastPOWBlock + 4; //Trigger a recalculation of accumulators
-        nBlockFirstFraudulent = nLastPOWBlock + 2; //First block that bad serials emerged
-        nBlockLastGoodCheckpoint = nLastPOWBlock + 4; //Last valid accumulator checkpoint
-        nBlockEnforceInvalidUTXO = nLastPOWBlock + 1; //Start enforcing the invalid UTXO's
+        nBlockEnforceSerialRange = 32803; //Enforce serial range starting this block
+        nBlockRecalculateAccumulators = 32804; //Trigger a recalculation of accumulators
+        nBlockFirstFraudulent = 32802; //First block that bad serials emerged
+        nBlockLastGoodCheckpoint = 32804; //Last valid accumulator checkpoint
+        nBlockEnforceInvalidUTXO = 32801; //Start enforcing the invalid UTXO's
         nInvalidAmountFiltered = 0*COIN; //Amount of invalid coins filtered through exchanges, that should be considered valid
-        nBlockZerocoinV2 = 300; //!> The block that zerocoin v2 becomes active
+        nBlockZerocoinV2 = 33000; //!> The block that zerocoin v2 becomes active
         nEnforceNewSporkKey = 1534773600; //!> Sporks signed after Monday, August 20, 2018 9:00:00 PM GMT+07:00 must use the new spork key
         nRejectOldSporkKey = 1534777200; //!> Fully reject old spork key after Monday, August 20, 2018 10:00:00 PM GMT+07:00
 
@@ -189,8 +189,8 @@ public:
         assert(hashGenesisBlock == uint256("0x00000ce0e533e7ac0094536fab7fc57fc52589da9ec08d75a692e0e10e80f873"));
         assert(genesis.hashMerkleRoot == uint256("0xe9c29a65e7c07de3e05dcf7bb562949d443567f5c9300980195bd3f7a79374d9"));
 
-	vSeeds.push_back(CDNSSeedData("stampcoin.club", "dnsseed1.stampcoin.club"));          // dnsseed1
-	vSeeds.push_back(CDNSSeedData("seed1.stampcoin.club", "seed1.stampcoin.club"));       // Single node address
+	vSeeds.push_back(CDNSSeedData("stampcoin.club", "dnsseed2.stampcoin.club"));          // dnsseed1
+	vSeeds.push_back(CDNSSeedData("seed2.stampcoin.club", "seed2.stampcoin.club"));       // Single node address
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 63);  // S
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 139); // x or y
