@@ -353,13 +353,13 @@ bool CheckProofOfStake(const CBlock block, uint256& hashProofOfStake, std::uniqu
     const CTxIn& txin = tx.vin[0];
 
     //Construct the stakeinput object
-    if (tx.IsZerocoinSpend()) {
+    /*if (tx.IsZerocoinSpend()) {
         libzerocoin::CoinSpend spend = TxInToZerocoinSpend(txin);
         if (spend.getSpendType() != libzerocoin::SpendType::STAKE)
             return error("%s: spend is using the wrong SpendType (%d)", __func__, (int)spend.getSpendType());
 
         stake = std::unique_ptr<CStakeInput>(new CZSamStake(spend));
-    } else {
+    } else {*/
         // First try finding the previous transaction in database
         uint256 hashBlock;
         CTransaction txPrev;
@@ -373,7 +373,7 @@ bool CheckProofOfStake(const CBlock block, uint256& hashProofOfStake, std::uniqu
         CSamStake* samInput = new CSamStake();
         samInput->SetInput(txPrev, txin.prevout.n);
         stake = std::unique_ptr<CStakeInput>(samInput);
-    }
+    //}
 
     CBlockIndex* pindex = stake->GetIndexFrom();
     if (!pindex)
