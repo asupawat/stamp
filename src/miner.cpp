@@ -644,7 +644,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
             LogPrintf("CPUMiner : proof-of-stake block found %s \n", pblock->GetHash().ToString().c_str());
             if (pblock->IsZerocoinStake()) {
                 //Find the key associated with the zerocoin that is being staked
-                libzerocoin::CoinSpend spend = TxInToZerocoinSpend(pblock->vtx[1].vin[0]);
+                /*libzerocoin::CoinSpend spend = TxInToZerocoinSpend(pblock->vtx[1].vin[0]);
                 CBigNum bnSerial = spend.getCoinSerialNumber();
                 CKey key;
                 if (!pwallet->GetZerocoinKey(bnSerial, key)) {
@@ -656,7 +656,9 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
                 if (!SignBlockWithKey(*pblock, key)) {
                     LogPrintf("BitcoinMiner(): Signing new block with zSAM key failed \n");
                     continue;
-                }
+                }*/
+                LogPrintf("*** Disable zPoS!\n");
+                continue;
             } else if (!SignBlock(*pblock, *pwallet)) {
                 LogPrintf("BitcoinMiner(): Signing new block with UTXO key failed \n");
                 continue;
